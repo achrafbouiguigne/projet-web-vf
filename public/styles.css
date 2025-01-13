@@ -1,0 +1,225 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f9f9f9; /* Arrière-plan doux */
+}
+
+/* En-tête */
+header {
+    background-color: #004080;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 4px solid #0066cc;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #0066cc;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #004080;
+    
+}
+.header-image {
+    width: 100px; /* Taille standardisée */
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour ajouter du relief */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px auto;
+}
+
+.header-image:hover {
+    transform: scale(1.1); /* Zoom léger au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    cursor :help ;
+}
+
+
+/* Section principale */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Style du formulaire */
+form#reservationForm {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+form#reservationForm label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+form#reservationForm select,
+form#reservationForm input[type="date"],
+form#reservationForm input[type="time"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form#reservationForm button[type="submit"] {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form#reservationForm button[type="submit"]:hover {
+    background-color: #00264d;
+    transform: scale(1.05);
+}
+
+/* Image d'aperçu */
+#terrainPreview {
+    display: block;
+    max-width: 400px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Section des créneaux réservés */
+#reservedSlots {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reservedSlots ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#reservedSlots li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+#reservedSlots li:last-child {
+    border-bottom: none;
+}
+
+#reservedSlots h2 {
+    margin-bottom: 10px;
+    color: #004080;
+}
+/* Style principal pour la section principale */
+main {
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Titre de la section */
+main h2 {
+    color: #004080;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Texte d'introduction */
+main p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+/* Bouton d'engagement ou appel à l'action */
+.main-button-container {
+    margin-top: 20px;
+}
+
+.main-button-container button {
+    background-color: #004080;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-button-container button:hover {
+    background-color: #00264d;
+    transform: scale(1.05);
+}
+.btn{
+
+    background-color: #004080;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn:hover{
+  
+        background-color: #00264d;
+        transform: scale(1.05);
+    
+}
+
