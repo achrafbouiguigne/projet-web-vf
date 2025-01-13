@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Mon Profil</title>
+    <link rel="icon" type="image/x-icon" href="/inpt.ico">
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #004a99;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .header-image {
+    width: 100px; /* Taille standardisée */
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour ajouter du relief */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px auto;
+}
+
+.header-image:hover {
+    transform: scale(1.1); /* Zoom léger au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    cursor :help ;
+}
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #004a99;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table thead {
+            background-color: #004a99;
+            color: #fff;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 10px 20px;
+            margin: 20px auto;
+            background-color: #004a99;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            max-width: 200px;
+        }
+
+        .btn:hover {
+            background-color: #003366;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon Profil</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/reservation">Réserver un Terrain</a></li>
+                <li><a href="/allReservations">Historique des Réservations</a></li>
+                <li><a href="/">Logout</a></li>
+            </ul>
+        </nav>
+        <a href="https://www.inpt.ac.ma/">
+            <img src="/images/inpt.png" alt="Logo" class="header-image">
+        </a>
+    </header>
+    <main>
+        <section>
+            <h2>Mes Réservations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Terrain</th>
+                        <th>Date</th>
+                        <th>Heure</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationsTable">
+                    <!-- Les réservations seront injectées ici via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+    
+
+    <script>
+    // Récupérer les réservations de l'utilisateur depuis le backend
+    fetch('/api/my-reservations', {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const reservationsTable = document.getElementById('reservationsTable');
+
+        if (data.reservations && data.reservations.length > 0) {
+            data.reservations.forEach(reservation => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${reservation.terrain}</td>
+                    <td>${reservation.date}</td>
+                    <td>${reservation.time}</td>
+                `;
+
+                reservationsTable.appendChild(row);
+            });
+        } else {
+            reservationsTable.innerHTML = '<tr><td colspan="3">Aucune réservation trouvée.</td></tr>';
+        }
+    })
+    .catch(error => {
+        console.error("Erreur lors du chargement des réservations:", error);
+        alert("Impossible de charger vos réservations.");
+    });
+    </script>
+</body>
+</html>

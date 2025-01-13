@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Réservation</title>
+    <link rel="icon" type="image/x-icon" href="/inpt.ico">
+</head>
+<body>
+    <header>
+        <h1>Réserver un Terrain</h1>
+        <nav>
+            <ul>
+                <li><a href="/monProfile">mon profil</a></li>
+                <li><a href="/allReservations">Historique des Réservations</a></li>
+                <li><a href="/dashboard">Accueil</a></li>
+                <li><a href="/">Logout</a></li>
+
+            </ul>
+        </nav>
+        <a href="https://www.inpt.ac.ma/"><img src="/images/inpt.png" alt="Logo" class="header-image"></a>
+    </header>
+    <main>
+        <form id="reservationForm">
+    <label for="terrain">Choisissez un terrain:</label>
+    <select id="terrain" name="terrain" required>
+        <option value="basketball">Basket-ball</option>
+        <option value="football">Football</option>
+        <option value="volleyball">Volley-ball</option>
+        <option value="9andahar">9andahar</option>
+    </select>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <label for="time">Heure:</label>
+    <input type="time" id="time" name="time" required>
+    <button type="submit">Réserver</button>
+    <button id="deleteAllReservations" class="btn">Supprimer toutes mes réservations</button>
+
+
+
+
+<script>
+document.getElementById("reservationForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevent default form submission
+
+    // Collect the form values
+    const terrain = document.getElementById("terrain").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    // Validate the form inputs
+    if (!terrain || !date || !time) {
+        alert("Veuillez remplir tous les champs!");
+        return;
+    }
+
+    // Prepare the data for sending
+    const formData = {
+        terrain: terrain,
+        date: date,
+        time: time
+    };
+
+    // Send data to the backend via fetch
+    fetch("/api/reservations", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)  // Send data as JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Réservation ajoutée avec succès", data);
+        alert("Réservation réussie!");
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'ajout de la réservation", error);
+        alert("Une erreur est survenue.");
+    });
+});
+
+document.getElementById("deleteAllReservations").addEventListener("click", function() {
+    if (confirm("Êtes-vous sûr de vouloir supprimer toutes vos réservations ?")) {
+        fetch("/api/reservations", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error("Erreur lors de la suppression des réservations:", error);
+            alert("Une erreur est survenue lors de la suppression.");
+        });
+    }
+});
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="icon" type="image/x-icon" href="/inpt.ico">
+    <style>
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f9f9f9;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 4px solid #0066cc;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 10px auto;
+        }
+        .header-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            cursor: help;
+        }
+        .login-container {
+            background-color: white;
+            width: 350px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+        .login-container h2 {
+            text-align: center;
+            color: #004080;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .login-container input[type="submit"] {
+            background-color: #004080;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #00264d;
+            transform: scale(1.05);
+        }
+        .login-container a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #4db8ff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .login-container a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #222;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #4db8ff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur INPT Reservation</h1>
+        <a href="https://www.inpt.ac.ma/">
+            <img src="/images/inpt.png" alt="Logo" class="header-image">
+        </a>
+    </header>
+
+    <div class="login-container">
+        <h2>Connexion</h2>
+        <form action="/login" method="POST">
+            <label>Username: <input type="text" name="username" required></label><br>
+    <label>Password: <input type="password" name="password" required></label><br>
+            
+            <input type="submit" value="Se connecter">
+        </form>
+       
+        <a href="/register">Créer un compte</a>
+    </div>
+
+    <footer>
+        <p>© 2024 INPT. Tous droits réservés.</p>
+        <p>Créé par <strong>Achraf Bouiguigne et Mohammed Errouh</strong></p>
+    </footer>
+</body>
+</html>
